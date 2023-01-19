@@ -41,7 +41,10 @@ def main(page: ft.Page):
 
                 content=ft.ResponsiveRow(
                     [
-                    ft.TextField(label="With placeholder", hint_text="First Name"),
+                    ft.TextField(label="First Name", hint_text="First Name"),
+                    ft.TextField(label="Last Name", hint_text="Last Name"),
+                    ft.TextField(label="Date of Birth", hint_text="DOB"),
+                    ft.TextField(label="Gender", hint_text="Gender"),
                     ft.DataTable(
                         columns=[
                             ft.DataColumn(ft.Text("First name")),
@@ -90,8 +93,8 @@ def main(page: ft.Page):
 
     #Center window on open and set window size
     page.window_center()
-    page.window_width = 800
-    page.window_height = 800
+    page.window_width = 900
+    page.window_height = 900
     page.add(t)
 
 ft.app(target=main)
