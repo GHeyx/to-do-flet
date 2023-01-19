@@ -8,8 +8,31 @@ def main(page: ft.Page):
         tabs=[
             ft.Tab(
                 text="Tab 1",
-                content=ft.Container(
-                    content=ft.Text("This is Tab 1"), alignment=ft.alignment.center
+                content=ft.ResponsiveRow(
+                    [
+                    ft.Card(
+                            content=ft.Container(
+                                content=ft.Column(
+                                    [
+                                        ft.ListTile(
+                                            leading=ft.Icon(ft.icons.ALBUM),
+                                            title=ft.Text("The Enchanted Nightingale"),
+                                            subtitle=ft.Text(
+                                                "Music by Julie Gable. Lyrics by Sidney Stein."
+                                            ),
+                                        ),
+                                        ft.Row(
+                                            [ft.TextButton("Buy tickets"), ft.TextButton("Listen")],
+                                            alignment=ft.MainAxisAlignment.END,
+                                        ),
+                                    ]
+                                ),
+                                width=400,
+                                padding=10,
+                            )
+                        ),
+                    ft.Text("This is Tab 1"),
+                ],
                 ),
             ),
             ft.Tab(
@@ -18,6 +41,7 @@ def main(page: ft.Page):
 
                 content=ft.ResponsiveRow(
                     [
+                    ft.TextField(label="With placeholder", hint_text="First Name"),
                     ft.DataTable(
                         columns=[
                             ft.DataColumn(ft.Text("First name")),
