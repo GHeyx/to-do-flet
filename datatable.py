@@ -1,7 +1,5 @@
 import flet as ft
 
-
-
 def main(page: ft.Page):
     #Center window on open and set window size
     page.window_center()
