@@ -7,13 +7,21 @@ def main(page):
     page.window_width = 1000
     page.scroll = "adaptive"
     page.title = "Card Example"
-    page.add(
-        ft.Card(
+    # 
+    # Card Content: Selected Person Name, Image, Age
+    # 
+    # a "normal" avatar with background image
+    a1 = ft.CircleAvatar(
+        foreground_image_url="https://github.com/GHeyx/to-do-flet/blob/main/img/pfp.png",
+        content=ft.Text("FF"),
+    )
+    a1_card=ft.Card(
             content=ft.Container(
                 content=ft.Column(
                     [
                         ft.ListTile(
-                            leading=ft.Icon(ft.icons.ALBUM),
+                            # leading=ft.Image(src="img/pfp.png",fit=ft.ImageFit.CONTAIN),
+                            leading=a1,
                             title=ft.Text("The Enchanted Nightingale"),
                             subtitle=ft.Text(
                                 "Music by Julie Gable. Lyrics by Sidney Stein."
@@ -29,6 +37,6 @@ def main(page):
                 padding=10,
             )
         )
-    )
+    page.add(a1_card)
 
 ft.app(target=main)
