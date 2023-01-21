@@ -1,4 +1,3 @@
-import pathlib
 import flet as ft
 
 
@@ -15,18 +14,15 @@ def main(page):
     # 
     # Card Content: Selected Person Name, Image, Age
     # 
-    # a "normal" avatar with background image
-    a1_avatar = ft.CircleAvatar(
-        foreground_image_url="/pfp.png",
-        # foreground_image_url="https://github.com/GHeyx/to-do-flet/blob/main/img/pfp.png",
-        content=ft.Text("FF"),
-    )
+
+
     a1_card=ft.Card(
             content=ft.Container(
                 content=ft.Column(
                     [
                         ft.ListTile(
-                            leading=ft.Image(a1_avatar,fit=ft.ImageFit.CONTAIN),
+                            leading=ft.Image(src=f"assets\img\pfp.png",
+                            fit=ft.ImageFit.CONTAIN),
                             title=ft.Text("The Enchanted Nightingale"),
                             subtitle=ft.Text(
                                 "Music by Julie Gable. Lyrics by Sidney Stein."
