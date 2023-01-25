@@ -1,29 +1,41 @@
 import flet as ft
 
-class class1(ft.UserControl):
+class Person:
+    def __init__(self, first_name):
+        super().__init__()
+        self.first_name = first_name
+
+    
+    def build(self):
+        self.display_person = ft.Row(
+            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+            vertical_alignment=ft.CrossAxisAlignment.CENTER,
+            controls=[]
+        )
+        return ft.Row(controls=[self.display_person])
+class Class1(ft.UserControl):
 
     def build(self):
-        self.TextField=ft.TextField(label="First Name", hint_text="First Name")
-        self.new_person_button= ft.FloatingActionButton(ft.icons.ADD, on_click=self.new_person)
+        self.new_first_name = ft.TextField(label="First Name", hint_text="First Name")
+        self.new_person_button = ft.FloatingActionButton(ft.icons.ADD, on_click=self.add_clicked)
         self.people = ft.Column()
 
         name_row=ft.Column(
             controls=[
-            ft.Row(
-                controls=[self.TextField, self.new_person_button],
+                ft.Row(
+                controls=[self.new_first_name, self.new_person_button],
             ),
             self.people,
             ],
-        ),
-        self.update()
+        )
         return name_row
 
-    
-    # first_name=ft.TextField(label="First Name", hint_text="First Name")
-
-    def new_person(self, e):
-        pass
-    
+    def add_clicked(self, e):
+        person = Person(self.new_first_name.value)
+        self.people.controls.append(person)
+        self.new_first_name.value = ""
+        self.update()
+        
     def tabs(self):
         # pass
         t = ft.Tabs(
@@ -115,12 +127,7 @@ class class1(ft.UserControl):
             expand=1,
     )
 
-class person:
-    def __init__(self, first_name, last_name, date_of_birth, gender):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.date_of_birth = date_of_birth
-        self.gender = gender
+
 
 def main(page: ft.Page):
     page.title = "Tabs Example"
@@ -130,10 +137,10 @@ def main(page: ft.Page):
     page.window_center()
     page.window_width = 900
     page.window_height = 900
-    page.add(t)
+    
 
 
-    app = class1()
+    app = Class1()
     page.add(app)
 
 ft.app(target=main)
