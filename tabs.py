@@ -1,19 +1,43 @@
 import flet as ft
 
-class Person:
+class Person(ft.UserControl):
     def __init__(self, first_name):
         super().__init__()
         self.first_name = first_name
 
     
     def build(self):
-        self.display_person = ft.Row(
-            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
-            vertical_alignment=ft.CrossAxisAlignment.CENTER,
-            controls=[]
+        self.display_person = ft.Text(self.first_name)
+        
+        self.display_view = ft.Row(
+            controls=[
+                self.display_person,
+                ft.Card(
+            content=ft.Container(
+                content=ft.Column(
+                    [
+                        ft.ListTile(
+                            leading=ft.Icon(ft.icons.ALBUM),
+                            title=ft.Text(self.first_name),
+                            subtitle=ft.Text(
+                                "Music by Julie Gable. Lyrics by Sidney Stein."
+                            ),
+                        ),
+                        ft.Row(
+                            [ft.TextButton("Buy tickets"), ft.TextButton("Listen")],
+                            alignment=ft.MainAxisAlignment.END,
+                        ),
+                    ]
+                ),
+                width=400,
+                padding=10,
+            )
         )
-        return ft.Row(controls=[self.display_person])
+            ]
+        )
+        return ft.Column(controls=[self.display_view])
 class Class1(ft.UserControl):
+
 
     def build(self):
         self.new_first_name = ft.TextField(label="First Name", hint_text="First Name")
@@ -130,14 +154,15 @@ class Class1(ft.UserControl):
 
 
 def main(page: ft.Page):
-    page.title = "Tabs Example"
+    ft.ScrollMode.AUTO
+    ft.MainAxisAlignment.CENTER
+    page.title = "Add A New Person"
     
 
     #Center window on open and set window size
     page.window_center()
     page.window_width = 900
     page.window_height = 900
-    
 
 
     app = Class1()
