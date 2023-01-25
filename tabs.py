@@ -11,7 +11,6 @@ class Person(ft.UserControl):
         
         self.display_view = ft.Row(
             controls=[
-                self.display_person,
                 ft.Card(
             content=ft.Container(
                 content=ft.Column(
@@ -154,9 +153,8 @@ class Class1(ft.UserControl):
 
 
 def main(page: ft.Page):
-    ft.ScrollMode.AUTO
-    ft.MainAxisAlignment.CENTER
     page.title = "Add A New Person"
+    page.scroll = "auto"
     
 
     #Center window on open and set window size
