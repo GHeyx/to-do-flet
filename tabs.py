@@ -1,4 +1,16 @@
 import flet as ft
+# Algorithm layout to create a family tree and adjust the size of the tree to fit the window
+# Create a class for a "Person" node, which includes properties for the person's name, relationship to the parent node, and position on the tree.
+
+# Create a function for displaying a "Person" node, which takes in the person's name, relationship to the parent node, and position on the tree as arguments. This function should have a default size for the displayed node.
+
+# Create a function for adding a new "Person" node to the tree. This function should take in the person's name, relationship to the parent node, and position on the tree as arguments. It should then call the display function for the new node, positioning it adjacent to the existing siblings.
+
+# Create a function for resizing and moving nodes in the tree, to ensure that all nodes fit within the window when more people are added. This function should be called every time a new node is added.
+
+# Create a main function which creates the root node and calls the add function with the initial family members.
+
+# Call the main function to display the entire family tree.
 
 class Person(ft.UserControl):
     def __init__(self, first_name):
