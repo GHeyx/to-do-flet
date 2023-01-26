@@ -31,11 +31,11 @@ class Person(ft.UserControl):
                             leading=ft.Icon(ft.icons.ALBUM),
                             title=ft.Text(self.first_name),
                             subtitle=ft.Text(
-                                "Music by Julie Gable. Lyrics by Sidney Stein."
+                                "DETAILS GO HERE"
                             ),
                         ),
                         ft.Row(
-                            [ft.TextButton("Buy tickets"), ft.TextButton("Listen")],
+                            [ft.TextButton("EDIT BUTTON MAYBE?"), ft.TextButton("SOMETHING ELSE")],
                             alignment=ft.MainAxisAlignment.END,
                         ),
                     ]
