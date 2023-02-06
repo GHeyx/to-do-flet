@@ -3,6 +3,7 @@ import flet as ft
 def main(page: ft.Page):
 # Landing page for the app, this is the first page the user sees with controls like login, register, quit, login with google, etc.
     page.title="Landing Page"
+    page.horizontal_alignment = ft.CrossAxisAlignment.STRETCH
 
     # Function for when a button is clicked, it does nothing
     def nothing_happens_when_clicked(e):
@@ -13,7 +14,7 @@ def main(page: ft.Page):
         page.window_close()
 
     # Label for the title of the app labeled "Welcome to the Family"
-    welcome_label = ft.Text("Welcome to the Family", text_align=ft.TextAlign.CENTER, size=50)
+    welcome_label = ft.Text("Welcome to the Family", text_align="center",size=50)
     
     # Button for logging in with google labeled "Login with Google"
     google_login = ft.ElevatedButton(text="Login with Google", on_click=nothing_happens_when_clicked)
