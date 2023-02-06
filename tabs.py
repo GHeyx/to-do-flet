@@ -13,16 +13,18 @@ import flet as ft
 # Call the main function to display the entire family tree.
 
 class Person(ft.UserControl):
-    def __init__(self, first_name, last_name):
+    def __init__(self, first_name, last_name, gender):
         super().__init__()
         self.first_name = first_name
         self.last_name = last_name
+        self.gender = gender
 
     
     def build(self):
         # self.display_person = ft.Text(self.first_name)
         self.display_person = ft.Text("WHERE AM I????")
         self.full_name = self.first_name + " " + self.last_name
+        
         
         self.display_view = ft.Row(
             controls=[
@@ -33,9 +35,7 @@ class Person(ft.UserControl):
                         ft.ListTile(
                             leading=ft.Icon(ft.icons.PERSON),
                             title=ft.Text(self.full_name),
-                            subtitle=ft.Text(
-                                "DETAILS GO HERE"
-                            ),
+                            subtitle=ft.Text(self.gender),
                         ),
                         ft.Row(
                             [ft.TextButton("EDIT BUTTON MAYBE?"), ft.TextButton("SOMETHING ELSE")],
@@ -56,13 +56,16 @@ class Class1(ft.UserControl):
     def build(self):
         self.new_first_name = ft.TextField(label="First Name", hint_text="First Name")
         self.new_last_name = ft.TextField(label="Last Name", hint_text="Last Name")
+        self.new_gender = ft.RadioGroup(content=ft.Row([
+            ft.Radio(value="male", label="M"),
+            ft.Radio(value="female", label="F")]))
         self.new_person_button = ft.FloatingActionButton(ft.icons.ADD, on_click=self.add_clicked)
         self.people = ft.Column()
 
         name_row=ft.Column(
             controls=[
                 ft.Row(
-                controls=[self.new_first_name, self.new_last_name, self.new_person_button],
+                controls=[self.new_first_name, self.new_last_name,self.new_gender, self.new_person_button],
             ),
             self.people,
             ],
@@ -86,7 +89,7 @@ class Class1(ft.UserControl):
             self.new_first_name.focus()
             self.update()
         elif (self.new_first_name.value and self.new_last_name.value):
-            person = Person(self.new_first_name.value, self.new_last_name.value)
+            person = Person(self.new_first_name.value, self.new_last_name.value,self.new_gender.value)
             self.people.controls.append(person)
             self.new_first_name.error_text = ""
             self.new_last_name.error_text = ""
