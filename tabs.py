@@ -70,17 +70,22 @@ class Class1(ft.UserControl):
         return name_row
 
     def add_clicked(self, e):
-        if not self.new_first_name.value and self.new_last_name.value:
+        if (not self.new_first_name.value and self.new_last_name.value):
             self.new_first_name.error_text = "First name is required"
             self.new_first_name.focus()
-        elif not self.new_last_name.value and self.new_first_name.value:
+            self.new_last_name.error_text = ""
+            self.update()
+        elif (not self.new_last_name.value and self.new_first_name.value):
             self.new_last_name.error_text = "Last name is required"
-            self.new_first_name.focus()
-        elif not self.new_first_name.value and not self.new_last_name.value:
+            self.new_last_name.focus()
+            self.new_first_name.error_text = ""
+            self.update()
+        elif (not self.new_first_name.value and not self.new_last_name.value):
             self.new_first_name.error_text = "First name is required"
             self.new_last_name.error_text = "Last name is required" 
             self.new_first_name.focus()
-        elif self.new_first_name.value and self.new_last_name.value:
+            self.update()
+        elif (self.new_first_name.value and self.new_last_name.value):
             person = Person(self.new_first_name.value, self.new_last_name.value)
             self.people.controls.append(person)
             self.new_first_name.error_text = ""
