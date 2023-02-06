@@ -57,8 +57,8 @@ class Class1(ft.UserControl):
         self.new_first_name = ft.TextField(label="First Name", hint_text="First Name")
         self.new_last_name = ft.TextField(label="Last Name", hint_text="Last Name")
         self.new_gender = ft.RadioGroup(content=ft.Row([
-            ft.Radio(value="male", label="M"),
-            ft.Radio(value="female", label="F")]))
+            ft.Radio(value="male", label="M", fill_color="blue"),
+            ft.Radio(value="female", label="F", fill_color="pink")]))
         self.new_person_button = ft.FloatingActionButton(ft.icons.ADD, on_click=self.add_clicked)
         self.people = ft.Column()
 
@@ -95,6 +95,7 @@ class Class1(ft.UserControl):
             self.new_last_name.error_text = ""
             self.new_first_name.value = ""
             self.new_last_name.value = ""
+            self.new_gender.value = ""
             self.update()
         
     def tabs(self):
