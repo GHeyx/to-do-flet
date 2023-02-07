@@ -13,7 +13,7 @@ def main(page: ft.Page):
     # Check if username already exists, check if password is strong enough
     def register_clicked(e):
         email_field = ft.TextField(label="Email",width=400)
-        password_field = ft.TextField(label="Password",width=400)
+        password_field = ft.TextField(label="Password",width=400,password=True,on_submit=register_ok_clicked)
         register_ok_button = ft.ElevatedButton(text="Register", on_click=nothing_happens_when_clicked,width=200)
         register_cancel_button = ft.ElevatedButton(text="Cancel", on_click=register_cancel_clicked,width=200)
         ok_cancel_buttons = ft.Row([register_cancel_button,register_ok_button], alignment=ft.MainAxisAlignment.CENTER)
@@ -27,6 +27,7 @@ def main(page: ft.Page):
         page.update()
         
     def register_ok_clicked(e):
+        # Check if username already exists, check if password is strong enough
         pass
     def register_cancel_clicked(e):
         page.overlay.clear()
