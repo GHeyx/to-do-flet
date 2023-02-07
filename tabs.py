@@ -59,14 +59,16 @@ class Class1(ft.UserControl):
         self.new_gender = ft.RadioGroup(content=ft.Row([
             ft.Radio(value="male", label="M", fill_color="blue"),
             ft.Radio(value="female", label="F", fill_color="pink")]))
-        self.new_person_button = ft.FloatingActionButton(ft.icons.ADD, on_click=self.add_clicked)
+        self.new_person_button = ft.FloatingActionButton("Add",icon="PERSON_ADD_ALT_ROUNDED", on_click=self.add_clicked, tooltip="Add Person")
+        self.form_divider = ft.Divider()
+        self.reset_button = ft.FloatingActionButton("Reset",icon="UNDO", on_click=self.resest_clicked, tooltip="Reset")
         self.people = ft.Column()
 
         name_row=ft.Column(
             controls=[
                 ft.Row(
-                controls=[self.new_first_name, self.new_last_name,self.new_gender, self.new_person_button],
-            ),
+                controls=[self.new_first_name, self.new_last_name,self.new_gender, self.new_person_button,self.reset_button]
+            ),self.form_divider,
             self.people,
             ],
         )
@@ -97,6 +99,13 @@ class Class1(ft.UserControl):
             self.new_last_name.value = ""
             self.new_gender.value = ""
             self.update()
+    def resest_clicked(self, e):
+        self.new_first_name.error_text = ""
+        self.new_last_name.error_text = ""
+        self.new_first_name.value = ""
+        self.new_last_name.value = ""
+        self.new_gender.value = ""
+        self.update()
         
     def tabs(self):
         # pass
@@ -198,8 +207,8 @@ def main(page: ft.Page):
 
     #Center window on open and set window size
     page.window_center()
-    page.window_width = 900
-    page.window_height = 900
+    page.window_width = 1000
+    page.window_height = 1000
 
 
     app = Class1()
