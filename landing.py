@@ -1,6 +1,7 @@
 import flet as ft
 
 def main(page: ft.Page):
+    button_width = 300
 # Landing page for the app, this is the first page the user sees with controls like login, register, quit, login with google, etc.
     page.title="Landing Page"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
@@ -12,6 +13,7 @@ def main(page: ft.Page):
     # When register is clicked, a form appears below the button which asks for an email and a password
     # Check if username already exists, check if password is strong enough
     def register_clicked(e):
+        register_new_account.disabled = True
         email_field = ft.TextField(label="Email",width=400)
         password_field = ft.TextField(label="Password",width=400,password=True,on_submit=register_ok_clicked)
         register_ok_button = ft.ElevatedButton(text="Register", on_click=nothing_happens_when_clicked,width=200)
@@ -30,6 +32,7 @@ def main(page: ft.Page):
         # Check if username already exists, check if password is strong enough
         pass
     def register_cancel_clicked(e):
+        register_new_account.disabled = False
         page.overlay.clear()
         page.update()
 
@@ -42,16 +45,16 @@ def main(page: ft.Page):
     welcome_label = ft.Text("Welcome to the Family", text_align="center",size=50)
     
     # Button for logging in with google labeled "Login with Google"
-    google_login = ft.ElevatedButton(text="Login with Google", on_click=nothing_happens_when_clicked)
+    google_login = ft.ElevatedButton(text="Login with Google", on_click=nothing_happens_when_clicked,width=button_width)
 
     # Button for logging in with Username and Password labeled "Username Login"
-    username_login = ft.ElevatedButton(text="Username Login", on_click=nothing_happens_when_clicked)
+    username_login = ft.ElevatedButton(text="Username Login", on_click=nothing_happens_when_clicked,width=button_width)
 
     # Button for registering a new account labeled "Register"
-    register_new_account = ft.ElevatedButton(text="Register New Account", on_click=register_clicked)
+    register_new_account = ft.ElevatedButton(text="Register New Account", on_click=register_clicked,width=button_width)
 
     # Button to quit the app labeled "Quit"
-    quit_button = ft.ElevatedButton(text="Quit", on_click=quit_app)
+    quit_button = ft.ElevatedButton(text="Quit", on_click=quit_app,width=button_width-100, color="red")
 
     # Set the scroll to auto so the page can scroll
     page.scroll = "auto"
