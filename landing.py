@@ -42,7 +42,7 @@ def main(page: ft.Page):
         page.window_close()
 
     # Label for the title of the app labeled "Welcome to the Family"
-    welcome_label = ft.Text("Welcome to the Family", text_align="center",size=50)
+    welcome_label = ft.Text("Welcome to the Family", text_align="center",size=50,no_wrap=True)
     
     # Button for logging in with google labeled "Login with Google"
     google_login = ft.ElevatedButton(text="Login with Google", on_click=nothing_happens_when_clicked,width=button_width)
