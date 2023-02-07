@@ -83,7 +83,7 @@ def main(page: ft.Page):
                 hovermode='closest',
                 plot_bgcolor='rgb(248,248,248)'
                 )
-    fig.show()
+    # fig.show()
     
     page.add(PlotlyChart(fig, expand=True))
 
