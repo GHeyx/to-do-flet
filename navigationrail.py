@@ -1,6 +1,8 @@
 import flet as ft
+from time import sleep
 
 def main(page: ft.Page):
+    pb = ft.ProgressBar(width=400)
 
     rail = ft.NavigationRail(
         selected_index=0,
@@ -34,9 +36,17 @@ def main(page: ft.Page):
                 rail,
                 ft.VerticalDivider(width=1),
                 ft.Column([ ft.Text("Body!")], alignment=ft.MainAxisAlignment.START, expand=True),
+                ft.Column([ ft.Text("Doing something..."), pb])
             ],
             expand=True,
         )
+    
     )
+    for i in range(0, 101):
+        pb.value = i * 0.01
+        sleep(0.1)
+        page.update()
+    
+    
 
 ft.app(target=main)
