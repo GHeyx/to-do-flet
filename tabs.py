@@ -1,4 +1,6 @@
 import flet as ft
+import pandas as pd
+
 # Algorithm layout to create a family tree and adjust the size of the tree to fit the window
 # Create a class for a "Person" node, which includes properties for the person's name, relationship to the parent node, and position on the tree.
 
@@ -12,6 +14,8 @@ import flet as ft
 
 # Call the main function to display the entire family tree.
 
+
+df = pd.DataFrame()
 class Person(ft.UserControl):
     def __init__(self, first_name, last_name, gender):
         super().__init__()
@@ -75,30 +79,30 @@ class Class1(ft.UserControl):
         return name_row
 
     def add_clicked(self, e):
+        print(df)
+        # Verifies specific fields are filled out -First name
         if (not self.new_first_name.value and self.new_last_name.value):
             self.new_first_name.error_text = "First name is required"
             self.new_first_name.focus()
             self.new_last_name.error_text = ""
             self.update()
+        # Verifies specific fields are filled out -Last name
         elif (not self.new_last_name.value and self.new_first_name.value):
             self.new_last_name.error_text = "Last name is required"
             self.new_last_name.focus()
             self.new_first_name.error_text = ""
             self.update()
+        # Verifies specific fields are filled out -First and Last name
         elif (not self.new_first_name.value and not self.new_last_name.value):
             self.new_first_name.error_text = "First name is required"
             self.new_last_name.error_text = "Last name is required" 
             self.new_first_name.focus()
             self.update()
+        # If all fields are filled out, add person to the list and reset form
         elif (self.new_first_name.value and self.new_last_name.value):
             person = Person(self.new_first_name.value, self.new_last_name.value,self.new_gender.value)
             self.people.controls.append(person)
-            self.new_first_name.error_text = ""
-            self.new_last_name.error_text = ""
-            self.new_first_name.value = ""
-            self.new_last_name.value = ""
-            self.new_gender.value = ""
-            self.update()
+            self.resest_clicked(e)
     def resest_clicked(self, e):
         self.new_first_name.error_text = ""
         self.new_last_name.error_text = ""

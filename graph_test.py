@@ -67,16 +67,16 @@ def main(page: ft.Page):
             )
         return annotations
     
-    axis = dict(showline=False, # hide axis line, grid, ticklabels and  title
-            zeroline=False,
-            showgrid=False,
-            showticklabels=False,
+    axis = dict(showline=True, # hide axis line, grid, ticklabels and  title
+            zeroline=True,
+            showgrid=True,
+            showticklabels=True
             )
 
     fig.update_layout(title= 'Tree with Reingold-Tilford Layout',
                 annotations=make_annotations(position, v_label),
                 font_size=12,
-                showlegend=False,
+                showlegend=True,
                 xaxis=axis,
                 yaxis=axis,
                 margin=dict(l=40, r=40, b=85, t=100),
