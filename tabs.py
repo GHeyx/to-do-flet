@@ -14,8 +14,17 @@ import pandas as pd
 
 # Call the main function to display the entire family tree.
 
-
-df = pd.DataFrame()
+# family_data = pd.read_csv("family_data.csv")
+family_data = {
+    'ID': [1, 2, 3, 4, 5,6,7],
+    'First Name': ['Ruslan', 'Vera', 'Ema', 'Roland', 'Lyutsiya','Eddie','Ernest'],
+    'Last Name': ['Last_name', 'Last_name', 'Last_name', 'Last_name', 'Last_name','Last_name','Last_name'],
+    'Gender': ['M', 'F', 'F', 'M', 'F','M','M'],
+    'Date of Birth': ['1975-02-14', '1980-05-22', '2001-09-03', '2003-12-11', '2005-07-29', '2005-07-29', '2005-07-29'],
+    'Father ID': [None, None, 1, 1, 1,1, 1],
+    'Mother ID': [None, None, 2,2,2,2,2,]
+}
+df = pd.DataFrame(family_data)
 class Person(ft.UserControl):
     def __init__(self, first_name, last_name, gender):
         super().__init__()
@@ -26,7 +35,7 @@ class Person(ft.UserControl):
     
     def build(self):
         # self.display_person = ft.Text(self.first_name)
-        self.display_person = ft.Text("WHERE AM I????")
+        # self.display_person = ft.Text("WHERE AM I????")
         self.full_name = self.first_name + " " + self.last_name
         
         
@@ -42,7 +51,7 @@ class Person(ft.UserControl):
                             subtitle=ft.Text(self.gender),
                         ),
                         ft.Row(
-                            [ft.TextButton("EDIT BUTTON MAYBE?"), ft.TextButton("SOMETHING ELSE")],
+                            [ft.TextButton("Edit"), ft.TextButton("Delete")],
                             alignment=ft.MainAxisAlignment.END,
                         ),
                     ]
