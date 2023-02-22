@@ -228,3 +228,5 @@ def main(page: ft.Page):
     page.add(app)
 
 ft.app(target=main)
+
+# (lambda: print("Hello, world!"))()
